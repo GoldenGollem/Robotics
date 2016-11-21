@@ -11,10 +11,9 @@
 
 package org.usfirst.frc.team2509.robot.commands;
 
+import org.usfirst.frc.team2509.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team2509.robot.*;
-import org.usfirst.frc.team2509.robot.subsystems.*;
-import org.usfirst.frc.team2509.robot.commands.*;
 
 /**
  *

@@ -11,12 +11,27 @@
 
 package org.usfirst.frc.team2509.robot;
 
-import org.usfirst.frc.team2509.robot.subsystems.*;
-import org.usfirst.frc.team2509.robot.commands.*;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team2509.robot.commands.ArmOff;
+import org.usfirst.frc.team2509.robot.commands.ArmOn;
+import org.usfirst.frc.team2509.robot.commands.ArmsIn;
+import org.usfirst.frc.team2509.robot.commands.ArmsStandbye;
+import org.usfirst.frc.team2509.robot.commands.DriveBack;
+import org.usfirst.frc.team2509.robot.commands.DriveForward;
+import org.usfirst.frc.team2509.robot.commands.GripOff;
+import org.usfirst.frc.team2509.robot.commands.GripOn;
+import org.usfirst.frc.team2509.robot.commands.IntakeCMD;
+import org.usfirst.frc.team2509.robot.commands.IntakeOff;
+import org.usfirst.frc.team2509.robot.commands.LLiftDown;
+import org.usfirst.frc.team2509.robot.commands.LLiftStop;
+import org.usfirst.frc.team2509.robot.commands.LLiftUp;
+import org.usfirst.frc.team2509.robot.commands.RLiftDown;
+import org.usfirst.frc.team2509.robot.commands.RLiftStop;
+import org.usfirst.frc.team2509.robot.commands.RLiftUp;
+
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.*;;
+import edu.wpi.first.wpilibj.buttons.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 
 /**
