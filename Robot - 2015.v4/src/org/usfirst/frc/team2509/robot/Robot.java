@@ -16,6 +16,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain RobotDrive;
 	public static Guide guide;
 	public static Grips grip;
+	public static Lift lift;
 	public static OI oi;
 	Joystick lStick = Robot.oi.leftStick;
 	Joystick rStick = Robot.oi.rightStick;

@@ -12,6 +12,13 @@ public class RobotMap {
     public static DoubleSolenoid GuidePiston;
     //Grips
     public static DoubleSolenoid GripPiston;
+    //Lift
+    public static SpeedController liftMotorL;
+    public static SpeedController liftMotorR;
+    public static DigitalInput LimitLT;
+    public static DigitalInput LimitRT;
+    public static DigitalInput LimitLB;
+    public static DigitalInput LimitRB;
 
     public static void init() {
     	//Define the DriveTrain Motors PWM port
@@ -27,5 +34,12 @@ public class RobotMap {
     	GripPiston = new DoubleSolenoid(0,0,1);
     	//Define the Guides
     	GuidePiston = new DoubleSolenoid(0,2,3);
+    	//Define the Lift
+    	liftMotorL = new Talon(2);
+    	liftMotorR = new Talon(3);
+    	LimitLT = new DigitalInput(0);
+    	LimitLB = new DigitalInput(1);
+    	LimitRT = new DigitalInput(2);
+    	LimitRB = new DigitalInput(3);
     }
 }
