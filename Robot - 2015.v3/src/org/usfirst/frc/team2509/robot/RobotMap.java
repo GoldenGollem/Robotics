@@ -15,7 +15,7 @@ public class RobotMap {
 
     public static void init() {
     	//Define the DriveTrain Motors PWM port
-    	driveTrainMotorL = new Talon(0);
+    	driveTrainMotorL = new Talon(2);
     	driveTrainMotorR = new Talon(1);
     	//Define the DriveTrain and Safety
     	RobotDrive = new RobotDrive(driveTrainMotorL, driveTrainMotorR);

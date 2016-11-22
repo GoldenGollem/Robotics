@@ -1,68 +1,47 @@
-
 package org.usfirst.frc.team2509.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
- */
+
 public class Robot extends IterativeRobot {
     final String defaultAuto = "Default";
     final String customAuto = "My Auto";
     String autoSelected;
     SendableChooser chooser;
-    DigitalInput TopLeft = new DigitalInput(0);
+    DigitalInput TopLeft = new DigitalInput(2);
 	DigitalInput TopRight = new DigitalInput(1);
-	DigitalInput BotLeft = new DigitalInput(2);
-	DigitalInput BotRight = new DigitalInput(3);
+	DigitalInput BotLeft = new DigitalInput(3);
+	DigitalInput BotRight = new DigitalInput(0);
 	Joystick stick1 = new Joystick(0);
 	Joystick stick2 = new Joystick(1);
-	SpeedController lMotor = new Talon(0);
+	SpeedController lMotor = new Talon(2);
 	SpeedController rMotor = new Talon(1);
 	RobotDrive chassis = new RobotDrive(lMotor, rMotor);
-    
-    /**
-     * This function is run when the robot is first started up and should be
-     * used for any initialization code.
-     */
+
     public void robotInit() {
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", defaultAuto);
         chooser.addObject("My Auto", customAuto);
         SmartDashboard.putData("Auto choices", chooser);
         CheckDigital();
-    }
-    
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select between different autonomous modes
-	 * using the dashboard. The sendable chooser code works with the Java SmartDashboard. If you prefer the LabVIEW
-	 * Dashboard, remove all of the chooser code and uncomment the getString line to get the auto name from the text box
-	 * below the Gyro
-	 *
-	 * You can add additional auto modes by adding additional comparisons to the switch structure below with additional strings.
-	 * If using the SendableChooser make sure to add them to the chooser code above as well.
-	 */
+        lMotor.setInverted(true);
+        rMotor.setInverted(true);
+    	}
     public void autonomousInit() {
     	autoSelected = (String) chooser.getSelected();
-//		autoSelected = SmartDashboard.getString("Auto Selector", defaultAuto);
+		autoSelected = SmartDashboard.getString("Auto Selector", defaultAuto);
 		System.out.println("Auto selected: " + autoSelected);
     }
-
-    /**
-     * This function is called periodically during autonomous
-     */
     public void autonomousPeriodic() {
     	switch(autoSelected) {
     	case customAuto:
@@ -75,21 +54,15 @@ public class Robot extends IterativeRobot {
     	}
     }
 
-    /**
-     * This function is called periodically during operator control
-     */
     public void teleopPeriodic() {
         while(isOperatorControl()&&isEnabled()){
         	CheckDigital();
-        	chassis.tankDrive(stick1.getX(),stick2.getX());
+        	chassis.tankDrive(stick1.getY(),stick2.getY());
         }
+        
     }
-    
-    /**
-     * This function is called periodically during test mode
-     */
     public void testPeriodic() {
-    
+    	LiveWindow.run();
     }
     public void CheckDigital(){
     	SmartDashboard.putBoolean("L Limit Top", TopLeft.get());

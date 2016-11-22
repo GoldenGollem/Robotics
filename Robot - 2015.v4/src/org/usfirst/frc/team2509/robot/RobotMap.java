@@ -22,7 +22,7 @@ public class RobotMap {
 
     public static void init() {
     	//Define the DriveTrain Motors PWM port
-    	driveTrainMotorL = new Talon(0);
+    	driveTrainMotorL = new Talon(2);
     	driveTrainMotorR = new Talon(1);
     	//Define the DriveTrain and Safety
     	RobotDrive = new RobotDrive(driveTrainMotorL, driveTrainMotorR);
@@ -37,9 +37,9 @@ public class RobotMap {
     	//Define the Lift
     	liftMotorL = new Talon(2);
     	liftMotorR = new Talon(3);
-    	LimitLT = new DigitalInput(0);
-    	LimitLB = new DigitalInput(1);
-    	LimitRT = new DigitalInput(2);
-    	LimitRB = new DigitalInput(3);
+    	LimitLT = new DigitalInput(2);
+    	LimitLB = new DigitalInput(3);
+    	LimitRT = new DigitalInput(1);
+    	LimitRB = new DigitalInput(0);
     }
 }

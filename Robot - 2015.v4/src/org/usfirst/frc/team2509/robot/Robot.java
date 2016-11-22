@@ -22,6 +22,7 @@ public class Robot extends IterativeRobot {
 	Joystick rStick = Robot.oi.rightStick;
     Command autonomousCommand;
     SendableChooser chooser;
+    Compressor comp;
 
     public void robotInit() {
     	RobotMap.init();
@@ -29,6 +30,7 @@ public class Robot extends IterativeRobot {
 		RobotDrive = new DriveTrain();
 		guide = new Guide();
 		grip = new Grips();
+		comp.start();
         /*
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", new ExampleCommand());
@@ -58,6 +60,9 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null) autonomousCommand.cancel();
         while(isEnabled() && isOperatorControl()){
         	RobotDrive.OpDrive(lStick, rStick);
+        	Robot.lift.CalibrateLeft();
+        	Robot.lift.CalibrateRight();
+        	Robot.lift.CheckDigital();
         }
     }
 
