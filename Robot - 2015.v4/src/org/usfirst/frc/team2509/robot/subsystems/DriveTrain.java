@@ -17,5 +17,17 @@ public class DriveTrain extends Subsystem {
     public void OpDrive(Joystick leftstick, Joystick rightstick){
     	RobotDrive.tankDrive(leftstick.getX(), rightstick.getX());
     }
+    public void Forward(){
+    	lMotor.set(0.5);
+    	rMotor.set(0.5);
+    }
+    public void Backward(){
+    	lMotor.set(-0.5);
+    	rMotor.set(-0.5);
+    }
+    public void Stop(){
+    	lMotor.set(0);
+    	rMotor.set(0);
+    }
 }
 
