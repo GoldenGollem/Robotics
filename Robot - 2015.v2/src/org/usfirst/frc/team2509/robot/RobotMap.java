@@ -7,6 +7,7 @@ public class RobotMap {
     public static SpeedController driveTrainMotorR;
     public static SpeedController driveTrainMotorL;
     public static RobotDrive RobotDrive;
+    public static Compressor comp;
     //Grip
     public static DoubleSolenoid GripPiston;
     
@@ -21,6 +22,8 @@ public class RobotMap {
     	RobotDrive.setMaxOutput(1.0);
     	RobotDrive.setSafetyEnabled(true);
     	RobotDrive.setSensitivity(0.25);
+    	//Define the Compressor
+    	comp = new Compressor();
     	//Define the Grips
     	GripPiston = new DoubleSolenoid(0,0,1);
     }

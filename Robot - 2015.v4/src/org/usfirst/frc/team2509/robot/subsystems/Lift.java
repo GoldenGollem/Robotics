@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.*;
+import edu.wpi.first.wpilibj.*;
 
 public class Lift extends Subsystem {
 	
@@ -65,7 +66,6 @@ public class Lift extends Subsystem {
         SmartDashboard.putBoolean("R Limit Top", TopRight.get());
         SmartDashboard.putBoolean("R Limit Bottom", BotRight.get());
 
-    }
-    
+    }    
 }
 
