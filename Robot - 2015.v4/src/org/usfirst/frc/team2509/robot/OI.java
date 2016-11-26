@@ -16,6 +16,8 @@ public class OI {
     public JoystickButton Guide;
     public JoystickButton GripIn;
     public JoystickButton GripOff;
+    public JoystickButton LiftUp;
+    public JoystickButton LiftDown;
     public OI() {
         leftStick = new Joystick(0);
         rightStick = new Joystick(1);
@@ -24,10 +26,15 @@ public class OI {
         Guide.whileHeld(new GuideIn());
         Guide.whenReleased(new GuideOff());
         //Define Grip Buttons
-        GripIn = new JoystickButton(leftStick, 1);
+        GripIn = new JoystickButton(leftStick, 4);
         GripIn.whenPressed(new GripIn());
-        GripOff = new JoystickButton(leftStick, 2);
+        GripOff = new JoystickButton(leftStick, 5);
         GripOff.whenPressed(new GripOff());
+        //Define Lift Buttons
+        LiftUp = new JoystickButton(leftStick, 3);
+        LiftUp.whileHeld(new LiftUp());
+        LiftDown = new JoystickButton(leftStick,2);
+        LiftDown.whileHeld(new LiftDown());
     }
     public Joystick getleftStick() {
         return leftStick;
