@@ -9,10 +9,10 @@
 // it from being updated in the future.
 
 
-package org.usfirst.frc2509.Robot2015d.v1.subsystems;
+package org.usfirst.frc2509.Robot2015d.v3.subsystems;
 
-import org.usfirst.frc2509.Robot2015d.v1.RobotMap;
-import org.usfirst.frc2509.Robot2015d.v1.commands.*;
+import org.usfirst.frc2509.Robot2015d.v3.RobotMap;
+import org.usfirst.frc2509.Robot2015d.v3.commands.*;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
@@ -48,6 +48,10 @@ public class RobotDrive extends Subsystem {
 
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
+   
+    public void OpControl(Joystick stick1, Joystick stick2){
+    	robotDrive.tankDrive(stick1.getY(), stick2.getY());
     }
+    
 }
 
