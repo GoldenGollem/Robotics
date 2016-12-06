@@ -48,7 +48,7 @@ public class RobotDrive extends Subsystem {
 
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
-   
+    }
     public void OpControl(Joystick stick1, Joystick stick2){
     	robotDrive.tankDrive(stick1.getY(), stick2.getY());
     }

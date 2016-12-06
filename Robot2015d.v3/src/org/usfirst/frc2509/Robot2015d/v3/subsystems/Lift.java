@@ -58,12 +58,16 @@ public class Lift extends Subsystem {
     	if(leftTop.get()==false&&rightTop.get()==false){
     		lMotor.set(0.5);
     		rMotor.set(0.5);
+    	}else{
+    		Stop();
     	}
     }
     public void Down(){
     	if(leftBottom.get()==false&&rightBottom.get()==false){
     		lMotor.set(-0.5);
     		rMotor.set(-0.5);
+    	}else{
+    		Stop();
     	}
     }
     public void Stop(){
