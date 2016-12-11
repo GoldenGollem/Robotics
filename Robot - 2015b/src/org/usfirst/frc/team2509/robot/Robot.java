@@ -10,15 +10,15 @@
 
 package org.usfirst.frc.team2509.robot;
 
+import com.ni.vision.NIVision;
+import com.ni.vision.NIVision.Image;
+
 import org.usfirst.frc.team2509.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2509.robot.subsystems.Grip;
 import org.usfirst.frc.team2509.robot.subsystems.Guides;
 import org.usfirst.frc.team2509.robot.subsystems.Intake;
 import org.usfirst.frc.team2509.robot.subsystems.LeftLift;
 import org.usfirst.frc.team2509.robot.subsystems.RightLift;
-
-import com.ni.vision.NIVision;
-import com.ni.vision.NIVision.Image;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
@@ -58,7 +58,7 @@ public class Robot extends IterativeRobot {
      */
     
     public void robotInit() {
-    RobotMap.init();
+    	RobotMap.init();
         Comp = new Compressor();
         driveTrain = new DriveTrain();
         grip = new Grip();
