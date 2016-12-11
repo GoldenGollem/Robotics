@@ -1,10 +1,21 @@
 package org.usfirst.frc2509.Robot2015d.v3;
 
-import org.usfirst.frc2509.Robot2015d.v3.commands.*;
-import edu.wpi.first.wpilibj.smartdashboard.*;
-import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.buttons.*;
-import org.usfirst.frc2509.Robot2015d.v3.subsystems.*;
+import org.usfirst.frc2509.Robot2015d.v3.commands.ArmIn;
+import org.usfirst.frc2509.Robot2015d.v3.commands.ArmMove;
+import org.usfirst.frc2509.Robot2015d.v3.commands.ArmOut;
+import org.usfirst.frc2509.Robot2015d.v3.commands.AutonomousCommand;
+import org.usfirst.frc2509.Robot2015d.v3.commands.GripIn;
+import org.usfirst.frc2509.Robot2015d.v3.commands.GripOut;
+import org.usfirst.frc2509.Robot2015d.v3.commands.GuideIn;
+import org.usfirst.frc2509.Robot2015d.v3.commands.GuideOff;
+import org.usfirst.frc2509.Robot2015d.v3.commands.LiftDown;
+import org.usfirst.frc2509.Robot2015d.v3.commands.LiftUp;
+import org.usfirst.frc2509.Robot2015d.v3.commands.MoveGrip;
+import org.usfirst.frc2509.Robot2015d.v3.commands.MoveGuide;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class OI {
 
@@ -25,21 +36,22 @@ public class OI {
 	 * until it is finished as determined by it's isFinished method.
 	 * button.whenReleased(new ExampleCommand());
 	 */
-	
+	//Joystick Buttons
     public JoystickButton arm_A;
-    public JoystickButton arm_B;
+  //public JoystickButton arm_B;
     public JoystickButton grip;
     public JoystickButton guide;
     public JoystickButton lift_Up;
     public JoystickButton lift_Down;
-    
+    //Joysticks
     public Joystick rStick;
     public Joystick lStick;
 
     public OI() {
+    	//Define Joystick Variables
     	lStick = new Joystick(0);
         rStick = new Joystick(1);
-        
+        //Define Joystick Buttons
         grip = new JoystickButton(rStick, 1);
         grip.whenPressed(new MoveGrip());
         lift_Down = new JoystickButton(rStick, 2);
@@ -48,25 +60,25 @@ public class OI {
         lift_Up.whileHeld(new LiftUp());
         guide = new JoystickButton(lStick, 4);
         guide.whenPressed(new MoveGuide());
-        arm_B = new JoystickButton(lStick, 1);
-        arm_B.whenReleased(new ArmOut());
+        //arm_B = new JoystickButton(lStick, 1);
+        //arm_B.whenReleased(new ArmOut());
         arm_A = new JoystickButton(lStick, 1);
-        arm_A.whileHeld(new ArmIn());
+        arm_A.whileHeld(new ArmMove());
 
 
-        // SmartDashboard Buttons
+        // SMARTDASHBOARD BUTTONS
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
-        SmartDashboard.putData("GripIn", new GripIn());
-        SmartDashboard.putData("GripOut", new GripOut());
-        SmartDashboard.putData("GuideIn", new GuideIn());
-        SmartDashboard.putData("GuideOff", new GuideOff());
-        SmartDashboard.putData("ArmIn", new ArmIn());
-        SmartDashboard.putData("ArmOut", new ArmOut());
-        SmartDashboard.putData("LiftUp", new LiftUp());
-        SmartDashboard.putData("LiftDown", new LiftDown());
-        SmartDashboard.putData("MoveGrip", new MoveGrip());
-        SmartDashboard.putData("MoveGuide", new MoveGuide());
-
+        SmartDashboard.putData("Arm In", new ArmIn());
+        SmartDashboard.putData("Arm Out", new ArmOut());
+        SmartDashboard.putData("Grip In", new GripIn());
+        SmartDashboard.putData("Grip Out", new GripOut());
+        SmartDashboard.putData("Guide In", new GuideIn());
+        SmartDashboard.putData("Guide Off", new GuideOff());
+        SmartDashboard.putData("Lift Up", new LiftUp());
+        SmartDashboard.putData("Lift Down", new LiftDown());
+        SmartDashboard.putData("Move Grip", new MoveGrip());
+        SmartDashboard.putData("Move Guide", new MoveGuide());
+        SmartDashboard.putData("Move Arm", new ArmMove());
     }
 
     public Joystick getlStick() {
@@ -76,6 +88,12 @@ public class OI {
     public Joystick getrStick() {
         return rStick;
     }
+    
+    /**
+     * This when called will display the limit switch values
+     * on to the SmartDashboard. To get constant display run
+     * this in the teleopPeriodic()
+     */
     public void CheckDigital(){
     	SmartDashboard.putBoolean("Top Left", RobotMap.leftTop.get());
     	SmartDashboard.putBoolean("Top Right", RobotMap.rightTop.get());
