@@ -1,14 +1,10 @@
 
 package org.usfirst.frc2509.Robot.subsystems;
 
-import org.usfirst.frc2509.Robot.Robot;
 import org.usfirst.frc2509.Robot.RobotMap;
-import org.usfirst.frc2509.Robot.commands.*;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Talon;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Lift extends Subsystem {
@@ -48,6 +44,20 @@ public class Lift extends Subsystem {
     }
     public void CalibrateRightDown(){
     	rMotor.set(-0.5);
+    }
+    public boolean getTopLimit(){
+    	if(leftTop.get()==false&&rightTop.get()==false){
+    		return false;
+    	}else{
+    		return true;
+    	}
+    }
+    public boolean getBottomLimit(){
+    	if(leftBottom.get()==false&&rightBottom.get()==false){
+    		return false;
+    	}else{
+    		return true;
+    	}
     }
 }
 
